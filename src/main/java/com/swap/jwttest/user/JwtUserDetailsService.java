@@ -31,6 +31,10 @@ public class JwtUserDetailsService implements UserDetailsService {
                 new ArrayList<>());
     }
 
+    public Long findUserIdByUsername(String username) {
+        return userRepository.findByUsername(username).getId();
+    }
+
     public void saveToken(String username, String token) {
         UserDto user = userRepository.findByUsername(username);
         if (user == null) {
